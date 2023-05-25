@@ -22,9 +22,9 @@ GROUP BY owner_user_id
 -- 3
 SELECT u.id AS id, MIN(q.creation_date) AS q_creation_date, MIN(a.creation_date) AS a_creation_date
 FROM `bigquery-public-data.stackoverflow.users` AS u
- FULL JOIN `bigquery-public-data.stackoverflow.posts_answers` AS a
+ LEFT JOIN `bigquery-public-data.stackoverflow.posts_answers` AS a
      ON u.id = a.owner_user_id
- FULL JOIN `bigquery-public-data.stackoverflow.posts_questions` AS q
+ LEFT JOIN `bigquery-public-data.stackoverflow.posts_questions` AS q
      ON q.owner_user_id = u.id
 WHERE u.creation_date >= '2019-01-01' and u.creation_date < '2019-02-01'
 GROUP BY id
