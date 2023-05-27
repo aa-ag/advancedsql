@@ -28,3 +28,12 @@ FROM `bigquery-public-data.stackoverflow.users` AS u
      ON q.owner_user_id = u.id
 WHERE u.creation_date >= '2019-01-01' and u.creation_date < '2019-02-01'
 GROUP BY id
+
+-- 4
+SELECT q.owner_user_id 
+FROM `bigquery-public-data.stackoverflow.posts_questions` AS q
+WHERE EXTRACT(DATE FROM q.creation_date) = '2019-01-01'
+UNION DISTINCT
+SELECT a.owner_user_id
+FROM `bigquery-public-data.stackoverflow.posts_answers` AS a
+WHERE EXTRACT(DATE FROM a.creation_date) = '2019-01-01'
