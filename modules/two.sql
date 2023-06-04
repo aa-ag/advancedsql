@@ -58,7 +58,7 @@ SELECT pickup_community_area,
     trip_start_timestamp,
     trip_end_timestamp,
     RANK()
-        OVER(
+        OVER (
             PARTITION BY pickup_community_area,
             ORDER BY trip_start_timestamp
         ) AS trip_number
