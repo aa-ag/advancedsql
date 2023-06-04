@@ -52,3 +52,10 @@ SELECT trip_date,
         ROWS BETWEEN 3 PRECEDING AND 3 FOLLOWING
         ) AS avg_num_trips
 FROM trips_by_day
+
+-- Exercise 2
+SELECT pickup_community_area,
+    trip_start_timestamp,
+    trip_end_timestamp
+FROM `bigquery-public-data.chicago_taxi_trips.taxi_trips`
+WHERE DATE(trip_start_timestamp) = '2013-10-03'
